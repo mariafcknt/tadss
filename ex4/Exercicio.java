@@ -8,23 +8,37 @@ package ex4;
 
 import java.util.Random;
 
-public class Exercicio {
+public class Exercicio implements Runnable{
 
     public static void main(String[] args) {
 
+        Thread[] threads = new Thread[2];
+        //int numThread = 0;
+        for (int i = 0; i < threads.length; i++) {
+            if (i == 0) {
+                threads[i] = Thread.ofPlatform().start(new Exercicio());
+
+            }
+
+        }
+        
+    }
+
+    @Override
+    public void run() {
+        gerarLista();
+    }
+
+    public static void gerarLista(){
+        System.out.println(Thread.currentThread().getName());
         int[] lista = new int[10];
         Random r = new Random();
         for (int i = 0; i < lista.length; i++) {
             lista[i] = r.nextInt(100);
             System.out.println(lista[i]);
         }
-
-        Thread[] threads = new Thread[2];
-        System.out.println();
-        removerPosicaoLista(lista);
-        
-        
     }
+
 
     public static void removerPosicaoLista(int[] listaOriginal){
         int[] listaNova = new int[10];
