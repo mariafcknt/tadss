@@ -14,13 +14,27 @@ public class Exercicio {
 
         int[] lista = new int[10];
         Random r = new Random();
-        for (int i = 0; i <= lista.length; i++) {
+        for (int i = 0; i < lista.length; i++) {
             lista[i] = r.nextInt(100);
             System.out.println(lista[i]);
         }
 
         Thread[] threads = new Thread[2];
+        System.out.println();
+        removerPosicaoLista(lista);
         
+        
+    }
+
+    public static void removerPosicaoLista(int[] listaOriginal){
+        int[] listaNova = new int[10];
+        for (int i = 0; i < listaOriginal.length; i++ ){
+            if (i != 0) {
+                listaNova[i] = listaOriginal[i];
+                System.out.println(listaNova[i]);
+            }
+        }
+
     }
     
 
